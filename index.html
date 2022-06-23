@@ -9,9 +9,31 @@
 </head>
 <body>
     <button class="button" id="play"></button>
-    <button class="button" id="pause"></button>
+    <button hidden class="button" id="pause"></button>
     <button class="button" id="forward"></button>
     <button class="button" id="backward"></button>
-    <video src="./videos/lofi.mp4" width="200px"></video>
+    <video id="video" controls poster="./images/poster.jpg" muted src="./videos/lofi.mp4" width="200px"></video>
+
+    <script>
+        const $video = document.querySelector('#video');
+        const $play = document.querySelector('#play');
+        const $pause = document.querySelector('#pause');
+
+        $play.addEventListener('click', handlePlay);
+        $pause.addEventListener('click', handlePause);
+
+        function handlePlay() {
+            $video.play();
+            $play.hidden = true;
+            $pause.hidden = false;
+        }
+
+        function handlePause() {
+            $video.pause();
+            $play.hidden = false;
+            $pause.hidden = true;
+        }
+
+    </script>
 </body>
 </html>
